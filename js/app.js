@@ -155,7 +155,9 @@ function createChart() {
   }
 
   if (spendingChart) {
+    spendingChart.data.labels = categories;
     spendingChart.data.datasets[0].data = data;
+    spendingChart.data.datasets[0].backgroundColor = colors;
     spendingChart.update();
     return;
   }
