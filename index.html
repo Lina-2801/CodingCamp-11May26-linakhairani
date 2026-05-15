@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense & Budget Visualization</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        
+        <h1>Expense and Budget Visualization</h1>
+      </div>
+      <div class="balance-card">
+        <span>Total Balance</span>
+        <strong id="balance">$0.00</strong>
+      </div>
+    </header>
+
+    <section class="grid-panel">
+      <article class="panel panel-form">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+          <label>
+            Item Name
+            <input type="text" id="item-name" placeholder="e.g. Coffee" required />
+          </label>
+
+          <label>
+            Amount
+            <input type="number" id="amount" placeholder="e.g. 12.50" step="0.01" min="0.01" required />
+          </label>
+
+          <label>
+            Category
+            <select id="category" required>
+              <option value="">Select category</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Fun">Fun</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </label>
+
+          <label id="custom-category-label" class="hidden">
+            Custom Category
+            <input type="text" id="custom-category" placeholder="e.g. Utilities" />
+          </label>
+
+          <button type="submit">Add Transaction</button>
+        </form>
+      </article>
+
+      <article class="panel panel-list">
+        <div class="panel-title-row">
+          <h2>Transactions</h2>
+          <div class="panel-title-actions">
+            <span id="item-count">0 items</span>
+            <select id="sort-select" class="small-select">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="category">By Category</option>
+              <option value="amount-desc">Highest Amount</option>
+              <option value="amount-asc">Lowest Amount</option>
+            </select>
+            <button type="button" id="remove-all-btn" class="small-button">Remove All</button>
+          </div>
+        </div>
+        <div class="transaction-list" id="transaction-list"></div>
+      </article>
+
+      <article class="panel panel-chart">
+        <div class="panel-title-row">
+          <h2>Spending by Category</h2>
+        </div>
+        <canvas id="spending-chart" aria-label="Spending distribution chart" role="img"></canvas>
+      </article>
+    </section>
+  </main>
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
